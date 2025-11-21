@@ -51,6 +51,8 @@ select * from information_schema.key_column_usage where table_name='@@';
 --테이블 index 조회 (제약 조건 확인 가능)
 show index from @@;
 
+--index : 중요한 제약조건에 대하여 목차 생성 => pk,fk , unique
+
 --alter : 테이블의 구조를 변경 
 --테이블의 이름 변경 
 alter table @@ rename @@;

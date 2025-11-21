@@ -1,5 +1,9 @@
 --DML 구조 : 데이터를 넣고 조회/ 삭제/ 수정/ 삭제 
-select : 조회 insert :삽입 ,update : 수정,delete : 삭제 
+select : 조회 insert into values :삽입 ,update set : 수정,delete : 삭제 
+
+--회원가입 -> insert 발생
+--회원정보 수정 -> update 발생
+--회원탈퇴 -> delete -> 현실에서는  update(탈퇴 O,X여부로) 처리 
 
 --insert : 테이블에 데이터 삽입
 insert into 테이블명(컬럼1, 컬럼2, 컬럼3) values(데이터1, 데이터2, 데이터3);
@@ -12,6 +16,7 @@ update 테이블명 set name='@@'(바꾼 후 이름) , email='@@'(바꾼 후 이
 --delete : 데이터 삭제
 delete from 테이블명 where 조건;
 EX) delete from author where id='4';
+-- delete where 세트 
 
 --select : 조회
 select 컬럼1, 컬럼2 from 테이블명;
@@ -22,11 +27,11 @@ select * from @@;
 --select 조건절 (where)활용
 ex) select * from author where id='1';
 ex) select * from author where name='홍길동';
-    select * from author where id > 2 and name='홍길동';
-select * from author where id in(1,3,5);
+ex) select * from author where id > 2 and name='홍길동';
+ex) select * from author where id in(1,3,5);
 
 --이름 '홍길동'인 글쓴이가 쓴 글 목록을 조회하시오 
-select * from post where id in(select id from author where name='홍길동');
+select * from post where author_id in(select id from author where name='홍길동');
 
 --중복제거 조회 : distinct
 select distinct name from @@;
