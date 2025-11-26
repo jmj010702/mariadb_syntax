@@ -94,9 +94,10 @@ SELECT NAME, COUNT(NAME) AS COUNT FROM ANIMAL_INS COUNT GROUP BY NAME HAVING COU
 --카테고리 별 도서 판매량 집계하기 
 -- 코드를 입력하세요
 SELECT BK.CATEGORY , SUM(SALES) AS TOTAL_SALES
+
 FROM BOOK BK INNER JOIN BOOK_SALES BS ON BK.BOOK_ID = BS.BOOK_ID 
 WHERE DATE_FORMAT(SALES_DATE, '%Y-%m') LIKE '2022-01' 
-GROUP BY BK.CATEGORY HAVING SUM(SALES)
+GROUP BY BK.CATEGORY 
 ORDER BY CATEGORY ASC;
 
 --조건에 맞는 사용자의 총 거래금액 조회하기
@@ -107,4 +108,14 @@ INNER JOIN  USED_GOODS_BOARD BOARD ON USER.USER_ID = BOARD.WRITER_ID
 WHERE STATUS LIKE 'DONE'
 GROUP BY USER.USER_ID HAVING SUM(PRICE) >=700000
 ORDER BY TOTAL_SALES ASC;
+
+--다중열  group by
+--groupby 첫번째 컬럼, 두번째 컬럼 :  첫번째 컬ㄹ럼으로 grouping 이후에 두번째 컬럼으로 grouping 
+--post테이블에서 작성자별로 구분하여 같은 제목의 글의 개수를 출력하시오 
+select author_id, title, count(*) from post group by author_id, title;
+
+--재구매가 일어난 상품과 회원 리스트 구하기 
+SELECT USER_ID,PRODUCT_ID FROM ONLINE_SALE 
+GROUP BY USER_ID, PRODUCT_ID HAVING COUNT(PRODUCT_ID) >=2 
+ORDER BY USER_ID ASC, PRODUCT_ID DESC; 
 
