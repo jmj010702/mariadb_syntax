@@ -106,4 +106,7 @@ select * from post where created_time like '2025-11%';
 select *from post where created_time >='2025-11-01' and created_time < '2025-11-20';
 select * from post where created_time > '2025-11-00' and create_time < '2025-11-19 00:00:00';
 
-alter table author add column 
+--GROUP BY와 having
+--having은 group by를 통해 나온 집계값에 대한 조건 
+--글을 3번 이상 쓴 사람 ID찾기 
+select author_id from post p group by author_id having count(*) >=3;
