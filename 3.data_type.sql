@@ -63,7 +63,7 @@ alter table author add column birth date;
 alter table post add column created_time datetime;
 insert into post(id, title, contents, author_id, created_time) values(13, 'hello13','asdasd', 1, "2019-01-12 14:00:30");
 
---datetime과 default 현재시간 입력은 많이 사용되는 패턴
+--(datetime)과 default 현재시간 입력은 많이 사용되는 패턴
 alter table post modify column created_time datetime default current_timestamp();
 insert into post(id, title, contents, author_id) values(14, 'hello14','asdasd', 1);
 
