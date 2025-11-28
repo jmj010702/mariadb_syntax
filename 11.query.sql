@@ -79,8 +79,8 @@ INNER JOIN product p           ON od.product_id = p.id
 INNER JOIN orders o            ON od.orders_id = o.id
 INNER JOIN users buyer        ON buyer.id = o.user_id     
 ;
-
-alter table post add constraint post_fk 
-foreign key(author_id) references author(id)on update cascade;
-
-alter table user add constraint 
+ 
+select 
+    p.name, ol.order_qauntity,u.id, u,name, oi.order_time
+    from order_list ol 
+    inner join product p on p.id = ol.
